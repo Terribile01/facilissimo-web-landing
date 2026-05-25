@@ -10,7 +10,8 @@ import {
   AlertCircle,
   HelpCircle,
   ArrowRight,
-  Mail
+  Mail,
+  MessageCircle
 } from "lucide-react";
 import { AuditAnswers } from "../types";
 
@@ -30,15 +31,43 @@ export default function InteractiveAuditor() {
 
   const handleEmailResults = () => {
     const subject = encodeURIComponent(`Audit d'Efficienza Digitale - ${formData.businessName}`);
-    const bodyText = `Ciao Teresa,\n\nHo completato il Test d'Efficienza Digitale su Facilissimo.web!\nEcco i dettagli sul mio business:\n\n` +
+    
+    let bodyText = `Ciao Teresa,\n\nHo completato il Test d'Efficienza Digitale su Facilissimo.web!\n\n` +
+      `ECCO I DETTAGLI COMPILATI DEL MIO BUSINESS:\n` +
       `- Attività/Brand: ${formData.businessName}\n` +
       `- Settore: ${formData.businessType || "N/A"}\n` +
       `- Sito Web Attuale: ${formData.websiteUrl || "Nessuno (Nuovo Progetto)"}\n` +
       `- Attività Manuali Ripetitive: ${formData.manualTasks || "Nessuna di rilievo"}\n` +
-      `- Stress Tecnologico Principale: ${formData.mainStress || "Nessuno di rilievo"}\n\n` +
-      `Vorrei prenotare la mia Sessione Strategica Gratuita di 15 minuti basandoci su questo report!\n\nCordiali saluti.`;
+      `- Stress Tecnologico Principale: ${formData.mainStress || "Nessuno di rilievo"}\n\n`;
+
+    if (strategyResult) {
+      bodyText += `=== PROPOSTA STRATEGICA DI OTTIMIZZAZIONE GENERATA: ===\n\n${strategyResult}\n\n`;
+    }
+
+    bodyText += `Vorrei prenotare la mia Sessione Strategica Gratuita di 15 minuti basandoci su questa analisi!\n\nCordiali saluti.`;
     
     window.location.href = `mailto:mariateresarogani@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+  };
+
+  const handleWhatsAppResults = () => {
+    let text = `*Audit d'Efficienza Digitale - ${formData.businessName}*\n\n` +
+      `*Settore:* ${formData.businessType || "N/A"}\n` +
+      `*Sito attuale:* ${formData.websiteUrl || "Nessuno"}\n` +
+      `*Task manuali:* ${formData.manualTasks || "N/A"}\n` +
+      `*Stress:* ${formData.mainStress || "N/A"}\n\n`;
+
+    if (strategyResult) {
+      // Keep it clean for WhatsApp character limits
+      const cleanStrategy = strategyResult
+        .replace(/###/g, '')
+        .replace(/\*\*/g, '*')
+        .substring(0, 800);
+      text += `*STRATEGIA DI AUTOMAZIONE ED ECOOSISTEMA PROPOSTA:*\n${cleanStrategy}...\n\n`;
+    }
+
+    text += `Ciao Teresa! Ti inoltro l'esito del mio Test per la Sessione Strategica Gratuita di 15 min.`;
+
+    window.location.href = `https://wa.me/393791038253?text=${encodeURIComponent(text)}`;
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -404,19 +433,26 @@ Teresa & Gemini
                       </div>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-brand-slate/10 block sm:flex justify-between items-center gap-4 bg-brand-beige/30 p-4 rounded-sm border border-brand-slate/5">
+                    <div className="mt-6 pt-4 border-t border-brand-slate/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-brand-beige/30 p-4 rounded-sm border border-brand-slate/5">
                       <div>
                         <p className="text-xs font-serif font-semibold text-brand-slate">
                           Ti piace questa visione di lavoro?
                         </p>
-                        <p className="text-[11px] text-brand-slate-light font-sans">
-                          Invia l'esito a <strong className="text-brand-slate">mariateresarogani@gmail.com</strong> o parla con Teresa.
+                        <p className="text-[11px] text-brand-slate-light font-sans leading-relaxed">
+                          Invia l'esito a <span className="text-brand-slate font-bold">mariateresarogani@gmail.com</span> e sul telefono di Teresa per accelerare i tuoi flussi.
                         </p>
                       </div>
-                      <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto mt-3 sm:mt-0">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:flex gap-2 w-full md:w-auto">
+                        <button
+                          onClick={handleWhatsAppResults}
+                          className="w-full md:w-auto text-center px-3 py-2.5 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-brand-slate border border-[#25D366]/25 hover:border-[#25D366] text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+                        >
+                          <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+                          Invia WhatsApp
+                        </button>
                         <button
                           onClick={handleEmailResults}
-                          className="w-full sm:w-auto text-center px-4 py-2.5 bg-brand-cream hover:bg-white text-brand-slate border border-brand-slate/10 hover:border-brand-slate text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5 transition-all"
+                          className="w-full md:w-auto text-center px-3 py-2.5 bg-brand-cream hover:bg-white text-brand-slate border border-brand-slate/10 hover:border-brand-slate text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5 transition-all cursor-pointer"
                         >
                           <Mail className="w-3.5 h-3.5 text-brand-muted-lavender" />
                           Invia per Email
@@ -434,7 +470,7 @@ Teresa & Gemini
                               });
                             }
                           }}
-                          className="w-full sm:w-auto text-center px-4 py-2.5 bg-brand-slate text-brand-beige hover:bg-brand-slate-light text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5"
+                          className="w-full md:w-auto text-center px-3.5 py-2.5 bg-brand-slate text-brand-beige hover:bg-brand-slate-light text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5 cursor-pointer"
                         >
                           Prenota Strategia
                           <ArrowRight className="w-3.5 h-3.5" />

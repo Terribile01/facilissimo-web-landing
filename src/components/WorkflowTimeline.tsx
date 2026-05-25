@@ -100,7 +100,7 @@ export default function WorkflowTimeline() {
                   
                   {isActive && (
                     <p className="font-sans text-brand-slate-light text-xs mt-2 leading-relaxed">
-                      {step.description.substring(0, 110)}... <strong className="text-brand-slate font-medium underline">clicca per dettagli</strong>
+                      {step.description.substring(0, 120)}...
                     </p>
                   )}
                 </div>

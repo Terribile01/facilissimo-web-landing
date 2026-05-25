@@ -6,8 +6,8 @@ export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user already made a preference
-    const consent = localStorage.getItem("facilissimo_cookie_consent");
+    // Check if user already made a preference in this session
+    const consent = sessionStorage.getItem("facilissimo_cookie_consent");
     if (!consent) {
       // Small delay for natural entrance feel
       const timer = setTimeout(() => {
@@ -18,12 +18,12 @@ export default function CookieBanner() {
   }, []);
 
   const handleAcceptAll = () => {
-    localStorage.setItem("facilissimo_cookie_consent", "accepted");
+    sessionStorage.setItem("facilissimo_cookie_consent", "accepted");
     setIsVisible(false);
   };
 
   const handleDeclineAll = () => {
-    localStorage.setItem("facilissimo_cookie_consent", "declined");
+    sessionStorage.setItem("facilissimo_cookie_consent", "declined");
     setIsVisible(false);
   };
 

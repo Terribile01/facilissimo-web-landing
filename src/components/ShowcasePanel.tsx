@@ -193,10 +193,10 @@ export default function ShowcasePanel() {
                 <Heart className="w-4 h-4" />
               </div>
               <h4 className="font-serif text-sm font-semibold text-brand-slate">
-                Team Access
+                Accesso Team
               </h4>
               <p className="text-[10px] font-sans text-brand-slate-light mt-1.5 leading-relaxed">
-                Control who can edit and approve your content setup.
+                Controlla chi può modificare e approvare la gestione dei tuoi contenuti.
               </p>
             </div>
 
@@ -211,10 +211,10 @@ export default function ShowcasePanel() {
                 <Heart className="w-4 h-4" />
               </div>
               <h4 className="font-serif text-sm font-semibold text-brand-slate">
-                Notification
+                Notifiche
               </h4>
               <p className="text-[10px] font-sans text-brand-slate-light mt-1.5 leading-relaxed">
-                Customize alert dispatchers when tasks get automated.
+                Personalizza gli avvisi automatici quando i compiti vengono eseguiti.
               </p>
             </div>
 
@@ -229,10 +229,10 @@ export default function ShowcasePanel() {
                 <Heart className="w-4 h-4" />
               </div>
               <h4 className="font-serif text-sm font-semibold text-brand-slate">
-                Web Reports
+                Report Web
               </h4>
               <p className="text-[10px] font-sans text-brand-slate-light mt-1.5 leading-relaxed">
-                Export website response rate as a unified asset file.
+                Esporta il tasso di risposta o le prestazioni del sito in un unico file.
               </p>
             </div>
 
