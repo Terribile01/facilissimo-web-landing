@@ -135,7 +135,15 @@ export default function Testimonials() {
           <button 
             onClick={() => {
               const el = document.getElementById("interactive-auditor");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
+              if (el) {
+                const headerOffset = 80;
+                const elementPosition = el.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth"
+                });
+              }
             }}
             className="w-full md:w-auto px-5 py-3.5 bg-brand-cream text-brand-slate hover:bg-white text-[10px] font-sans uppercase tracking-[0.15em] font-bold rounded-sm flex items-center justify-center gap-1.5 shrink-0 transition-all shadow-sm border border-brand-slate/10"
           >

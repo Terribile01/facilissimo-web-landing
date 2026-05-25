@@ -225,7 +225,15 @@ export default function TimeCalculator() {
               <button
                 onClick={() => {
                   const el = document.getElementById("interactive-auditor");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                  if (el) {
+                    const headerOffset = 80;
+                    const elementPosition = el.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth"
+                    });
+                  }
                 }}
                 className="w-full sm:w-auto px-5 py-3 bg-brand-cream hover:bg-white text-brand-slate text-[10px] font-sans uppercase tracking-[0.15em] font-bold rounded-sm text-center transition-all shadow-sm"
               >

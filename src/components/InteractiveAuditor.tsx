@@ -426,7 +426,15 @@ Teresa & Gemini
                         <button
                           onClick={() => {
                             const cForm = document.getElementById("contact");
-                            if (cForm) cForm.scrollIntoView({ behavior: "smooth" });
+                            if (cForm) {
+                              const headerOffset = 80;
+                              const elementPosition = cForm.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                              window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                              });
+                            }
                           }}
                           className="w-full sm:w-auto text-center px-4 py-2.5 bg-brand-slate text-brand-beige hover:bg-brand-slate-light text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5"
                         >
