@@ -1,0 +1,6 @@
+{
+  "name": "Facilissimo Web",
+  "description": "Sito web e automazioni intelligenti per liberare il tuo tempo, unendo la strategia di Teresa all'efficienza di Gemini. Soluzioni digitali veloci, leggere e performanti.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,450;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom Color Palette matching the requested slate neutral-warm pastel aesthetic */
+  --color-brand-beige: #faf8f5;
+  --color-brand-taupe: #f3eee7;
+  --color-brand-slate: #2d2a2e;
+  --color-brand-slate-light: #504c52;
+  --color-brand-muted-lavender: #99909c;
+  --color-brand-cream: #fbfaf9;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-beige text-brand-slate font-sans selection:bg-brand-muted-lavender/30 selection:text-brand-slate antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight font-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-brand-beige;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-muted-lavender/40 rounded-full hover:bg-brand-muted-lavender/60 transition-colors;
+}
+
+/* Custom visual pulse animation for active indicator */
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+.pulse-soft {
+  animation: softPulse 3s infinite ease-in-out;
+}
