@@ -80,6 +80,12 @@ export default function Navbar() {
             Metodo Lean
           </button>
           <button 
+            onClick={() => scrollToSection("new-website")} 
+            className="text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all text-brand-slate font-bold decoration-brand-badge/40 underline decoration-2 underline-offset-4"
+          >
+            Nuovo Sito ✨
+          </button>
+          <button 
             onClick={() => scrollToSection("calculator")} 
             className="text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all"
           >
@@ -162,6 +168,13 @@ export default function Navbar() {
                 className="py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-semibold text-brand-slate hover:bg-brand-cream/60 rounded-sm text-left transition-all"
               >
                 Il Metodo Lean
+              </button>
+
+              <button
+                onClick={() => scrollToSection("new-website")}
+                className="py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-bold text-brand-slate bg-brand-cream/40 hover:bg-brand-cream/80 rounded-sm text-left transition-all border-l-2 border-brand-muted-lavender"
+              >
+                Nuovo Sito ✨ (Punto Di Svolta)
               </button>
 
               <button

@@ -10,6 +10,7 @@ import ValuePillars from "./components/ValuePillars";
 import DuoSection from "./components/DuoSection";
 import WorkflowTimeline from "./components/WorkflowTimeline";
 import TimeCalculator from "./components/TimeCalculator";
+import NewWebsiteSection from "./components/NewWebsiteSection";
 import InteractiveAuditor from "./components/InteractiveAuditor";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
@@ -42,6 +43,9 @@ export default function App() {
 
         {/* Dynamic Time Calculator tool */}
         <TimeCalculator />
+
+        {/* High-impact pitch for replacing sluggish pages with pristine high-performance code */}
+        <NewWebsiteSection />
 
         {/* Real-time Gemini Interactive Auditor Test */}
         <InteractiveAuditor />
