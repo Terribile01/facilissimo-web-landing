@@ -11,13 +11,16 @@ import DuoSection from "./components/DuoSection";
 import WorkflowTimeline from "./components/WorkflowTimeline";
 import TimeCalculator from "./components/TimeCalculator";
 import InteractiveAuditor from "./components/InteractiveAuditor";
-import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
+import CookieBanner from "./components/CookieBanner";
 
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-brand-beige">
+      {/* Cookie compliance */}
+      <CookieBanner />
+
       {/* Premium Sticky Navigation */}
       <Navbar />
 
@@ -42,9 +45,6 @@ export default function App() {
 
         {/* Real-time Gemini Interactive Auditor Test */}
         <InteractiveAuditor />
-
-        {/* Customer reviews and Lighthouse score badge */}
-        <Testimonials />
 
         {/* Project Strategy session booker card */}
         <ContactForm />

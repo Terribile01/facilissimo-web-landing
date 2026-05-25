@@ -166,22 +166,20 @@ export default function InteractiveAuditor() {
 
     return `
 ### 1. La Visione Strategica di Teresa
-Cara amica, caro amico di **${name}**, capisco perfettamente il tuo stress. Gestire una realtà come la tua e dover contemporaneamente combattere con la tecnologia è la principale causa di frustrazione digitale. La tua attività si occupa di **${type}** e merita un'efficacia trasparente. 
-La nostra priorità strategica consiste nell'addrizzare il tiro: il tuo sito attuale (${site}) deve smettere di essere un costo di gestione passivo e diventare l'addetto alle vendite automatico che lavora mentre tu dormi. Eliminando il superfluo, ridurremo significativamente la sensazione di stress legata a **${stress}**.
+Cara amica, caro amico di **${name}**, capisco perfettamente il tuo stress. Gestire una realtà come la tua (settore **${type}**) e dover contemporaneamente combattere con la tecnologia per seguire manualmente attività ripetitive come **"${tasks}"** è estenuante. 
+La nostra priorità strategica consiste nell'addrizzare il tiro: il tuo sito attuale (${site}) deve smettere di essere un costo passivo e diventare un catalizzatore automatico che acquisisce e smista contatti in totale autonomia, riducendo significativamente lo stress legato a **${stress}**.
 
-### 2. La Soluzione Tecnica "Lean" di Gemini
-Gemini rileva che un approccio Lean applicato al tuo ecosistema eliminerà tutti i ridondanti plug-in di terze parti carichi di script lenti. 
-Creeremo per te un'infrastruttura WordPress basata interamente sull'accoppiata **Gutenberg + Astra + Spectra**:
-- **Core Web Vitals Perfetti**: Pagine stabili con tempi di caricamento inferiori a 1.2 secondi.
-- **Piena Proprietà**: Codice pulito, ospitato sul tuo hosting, senza scadenze SaaS vincolanti.
-- **SEO Nativo**: Indicizzazione ottimizzata e struttura HTML5 semantica per posizionarsi davanti ai concorrenti nel settore **${type}**.
+### 2. Architettura d'Automazione "No-Code Core" (Notion + Make + Google Sheets)
+Per eliminare definitivamente ogni sforzo manuale e darti un controllo cristallino dei dati, imposteremo un'architettura integrata che non richiede costosi canoni mensili:
+1. **Repository Centralizzato Notion**: Creeremo per te un'area di lavoro (Workspace) su Notion perfettamente schematizzata per ospitare le tue anagrafiche, lead, canali social e monitoraggio.
+2. **Infrastruttura di Smistamento Make**: Configureremo scenari avanzati su Make (ex Integromat) o Zapier. Ogni volta che un utente compila un modulo sul tuo sito Web, i dati fluiscono instantaneamente su **Google Sheets** e aggiornano la tua bacheca clienti su **Notion** senza che tu debba muovere un dito.
+3. **Notifica di Controllo su WhatsApp o Telegram**: Sarai avvisato istantaneamente sul tuo cellulare quando un contatto importante richiede la tua attenzione.
 
-### 3. Flusso di Automazione "Tempo Liberato"
-Per eliminare l'attività manuale di **"${tasks}"**, Gemini propone il seguente flusso per regalarti fino a **8 ore settimanali di lavoro risparmiato**:
-1. **Modulo d'Ingresso**: Il cliente compila un modulo snello e ottimizzato per mobile direttamente sul nuovo sito.
-2. **Cattura Dati**: Le informazioni fluiscono istantaneamente e in sicurezza su un database ordinato, notificandoti su smartphone.
-3. **Risposta di Cortesia Empatica**: Il cliente riceve un preventivo provvisorio o una mail stilata con il tuo esatto Tone of Voice per confermare la presa in carico.
-4. **Calendaio Sincronizzato**: L'appuntamento o la scadenza viene bloccata in agenda in automatico, senza scambi infiniti di messaggi.
+### 3. Agenti AI & Copiloti Autonomi
+Inseriremo un **Agente AI personalizzato** (basato ufficialmente sulla tecnologia Gemini) che lavorerà in background come un assistente instancabile:
+- **Lettore Empatico di Email**: Analizzerà le email in arrivo o i moduli compilati per estrapolare le domande chiave dei clienti.
+- **Bozza Pronta per il Tone of Voice**: Genererà istantaneamente una bozza di risposta su Notion o nella tua posta, scritta con il tuo identico stile strategico ed empatico. Ti basterà un clic per convalidare e inviare.
+- **Sincronizzazione Agenda**: L'Agente AI verificherà la disponibilità e bloccherà lo slot orario ideale, azzerando i tempi morti.
 
 Teresa & Gemini
 `;

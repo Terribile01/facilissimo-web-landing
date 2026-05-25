@@ -41,13 +41,13 @@ export default function ValuePillars() {
     },
     {
       id: "practical-ai",
-      title: "AI Pratica & Automazioni",
-      description: "Smontiamo i pregiudizi sulla tecnologia. Progettiamo flussi di automazione reali e assistenti AI personalizzati che eliminano i passaggi complessi e le ore di lavoro ripetitivo.",
+      title: "Agenti AI & Automazioni",
+      description: "Sviluppiamo flussi intelligenti d'avanguardia. Utilizziamo Notion, Make, Google Sheets e Zapier per far cooperare all'unisono i tuoi strumenti lavorativi quotidiani, affiancati da veri Agenti AI autonomi che pensano ed agiscono al tuo posto.",
       details: [
-        "Autopilota per email, preventivi e scadenze",
-        "Chatbot empatici alimentati ufficialmente da Gemini",
-        "Riduzione immediata dello stress digitale",
-        "Estrazione automatica dei dati di business"
+        "Infrastruttura organizzativa integrata su Notion",
+        "Agenti AI personalizzati per categorizzare email e documenti",
+        "Flussi automatici infallibili con Make, Zapier e Slack",
+        "Notifiche di monitoraggio e alert automatici su Telegram o WhatsApp"
       ],
       iconName: "bot",
       metricLabel: "Ore Settimanali Liberate",

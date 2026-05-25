@@ -8,16 +8,30 @@ export default function Navbar() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = 80; // Adjust for the sticky navbar height + comfort padding
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      const headerOffset = 70; // Precise offset for sticky header height
+      
+      // Recursively calculate precise coordinate relative to document body
+      let actualTop = 0;
+      let currentElem: HTMLElement | null = element;
+      while (currentElem) {
+        actualTop += currentElem.offsetTop;
+        currentElem = currentElem.offsetParent as HTMLElement | null;
+      }
+      const offsetPosition = actualTop - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      // Close the mobile menu drawer first so layout doesn't jitter during scrolling
+      setIsOpen(false);
+
+      // Perform smooth scroll after a tiny microtask delay to allow the React state change to initiate collapse
+      setTimeout(() => {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }, 10);
+    } else {
+      setIsOpen(false);
     }
-    setIsOpen(false);
   };
 
   return (
