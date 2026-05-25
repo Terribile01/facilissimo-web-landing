@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Sparkles, Heart, Linkedin, MessageCircle, ArrowUp } from "lucide-react";
 
 export default function Footer() {
@@ -21,9 +22,9 @@ export default function Footer() {
               <div className="w-8 h-8 rounded-sm bg-brand-beige flex items-center justify-center text-brand-slate border border-brand-beige">
                 <Sparkles className="w-4 h-4 text-brand-slate" />
               </div>
-              <span className="font-serif text-lg font-semibold text-brand-beige tracking-tight">
+              <Link to="/" onClick={handleScrollTop} className="font-serif text-lg font-semibold text-brand-beige tracking-tight">
                 Facilissimo<span className="text-brand-muted-lavender">.web</span>
-              </span>
+              </Link>
             </div>
             
             <p className="font-sans text-brand-taupe/80 text-xs sm:text-sm max-w-sm leading-relaxed">
@@ -60,16 +61,16 @@ export default function Footer() {
               </h4>
               <ul className="space-y-3 text-xs text-brand-taupe font-sans font-medium">
                 <li>
-                  <a href="#pillars" className="hover:text-brand-beige transition-colors">I Tre Pilastri</a>
+                  <Link to="/pilastri" onClick={handleScrollTop} className="hover:text-brand-beige transition-colors">I Tre Pilastri</Link>
                 </li>
                 <li>
-                  <a href="#duo" className="hover:text-brand-beige transition-colors">Chi Siamo</a>
+                  <Link to="/chi-siamo" onClick={handleScrollTop} className="hover:text-brand-beige transition-colors">Chi Siamo</Link>
                 </li>
                 <li>
-                  <a href="#workflow" className="hover:text-brand-beige transition-colors">Il Metodo Lean</a>
+                  <Link to="/metodo" onClick={handleScrollTop} className="hover:text-brand-beige transition-colors">Il Metodo Lean</Link>
                 </li>
                 <li>
-                  <a href="#calculator" className="hover:text-brand-beige transition-colors">Calcola Risparmi</a>
+                  <Link to="/calcolatore" onClick={handleScrollTop} className="hover:text-brand-beige transition-colors">Calcola Risparmi</Link>
                 </li>
               </ul>
             </div>
@@ -80,13 +81,13 @@ export default function Footer() {
               </h4>
               <ul className="space-y-3 text-xs text-brand-taupe font-sans font-medium">
                 <li>
-                  <a href="#interactive-auditor" className="hover:text-brand-beige transition-colors">AI Test Rapido</a>
+                  <Link to="/test-ai" onClick={handleScrollTop} className="hover:text-brand-beige transition-colors">AI Test Rapido</Link>
                 </li>
                 <li>
-                  <a href="#visual-showcase" className="hover:text-brand-beige transition-colors">Core Web Vitals</a>
+                  <Link to="/automazioni" onClick={handleScrollTop} className="hover:text-brand-beige transition-colors">Automazioni</Link>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-brand-beige transition-colors">Strategia 15 min</a>
+                  <Link to="/nuovo-sito" onClick={handleScrollTop} className="hover:text-brand-beige transition-colors">Nuovo Sito ✨</Link>
                 </li>
               </ul>
             </div>
@@ -116,6 +117,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Facilissimo Web. All rights reserved.</p>
           
           <div className="flex items-center gap-1.5">
+            <Link to="/privacy" onClick={handleScrollTop} className="hover:text-brand-beige transition-colors mr-4">Privacy Policy</Link>
             <span>Disegnato con</span>
             <Heart className="w-3.5 h-3.5 text-red-400 fill-current hover:scale-110 transition-transform cursor-pointer" />
             <span>da Teresa & Gemini</span>

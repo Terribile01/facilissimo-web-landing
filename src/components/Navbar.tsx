@@ -1,49 +1,34 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Sparkles, Menu, X, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 70; // Precise offset for sticky header height
-      
-      // Recursively calculate precise coordinate relative to document body
-      let actualTop = 0;
-      let currentElem: HTMLElement | null = element;
-      while (currentElem) {
-        actualTop += currentElem.offsetTop;
-        currentElem = currentElem.offsetParent as HTMLElement | null;
-      }
-      const offsetPosition = actualTop - headerOffset;
-
-      // Close the mobile menu drawer first so layout doesn't jitter during scrolling
-      setIsOpen(false);
-
-      // Perform smooth scroll after a tiny microtask delay to allow the React state change to initiate collapse
-      setTimeout(() => {
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      }, 10);
-    } else {
-      setIsOpen(false);
-    }
+  const handleNavClick = (path: string) => {
+    setIsOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const navLinks = [
+    { name: "I Tre Pilastri", path: "/pilastri" },
+    { name: "Chi Siamo", path: "/chi-siamo" },
+    { name: "Metodo Lean", path: "/metodo" },
+    { name: "Nuovo Sito ✨", path: "/nuovo-sito", highlight: true },
+    { name: "Automazioni", path: "/automazioni" },
+    { name: "Calcolatore", path: "/calcolatore" },
+    { name: "AI Pratica", path: "/test-ai" },
+  ];
 
   return (
     <header className="sticky top-0 z-40 w-full bg-brand-beige/90 backdrop-blur-md border-b border-brand-taupe transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
-        {/* Brand Logo - beautifully handles mobile space */}
-        <div 
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            setIsOpen(false);
-          }} 
+        {/* Brand Logo */}
+        <Link
+          to="/"
+          onClick={() => handleNavClick("/")}
           className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group shrink-0"
         >
           <div className="w-8 h-8 border border-brand-slate flex items-center justify-center text-brand-slate transition-all group-hover:bg-brand-slate group-hover:text-brand-beige">
@@ -57,61 +42,37 @@ export default function Navbar() {
               Lean & AI Strategy
             </span>
           </div>
-        </div>
+        </Link>
 
-        {/* Desktop Navigation Elements (hidden on mobile) */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 font-sans text-[11px] uppercase tracking-[0.2em] font-semibold">
-          <button 
-            onClick={() => scrollToSection("pillars")} 
-            className="text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all"
-          >
-            I Tre Pilastri
-          </button>
-          <button 
-            onClick={() => scrollToSection("duo")} 
-            className="text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all"
-          >
-            Chi Siamo
-          </button>
-          <button 
-            onClick={() => scrollToSection("workflow")} 
-            className="text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all"
-          >
-            Metodo Lean
-          </button>
-          <button 
-            onClick={() => scrollToSection("new-website")} 
-            className="text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all text-brand-slate font-bold decoration-brand-badge/40 underline decoration-2 underline-offset-4"
-          >
-            Nuovo Sito ✨
-          </button>
-          <button 
-            onClick={() => scrollToSection("calculator")} 
-            className="text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all"
-          >
-            Calcolatore Tempo
-          </button>
-          <button 
-            onClick={() => scrollToSection("interactive-auditor")} 
-            className="text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all"
-          >
-            AI Pratica
-          </button>
+        {/* Desktop Navigation */}
+        <nav className="hidden xl:flex items-center gap-6 font-sans text-[10px] uppercase tracking-[0.2em] font-semibold">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              onClick={() => handleNavClick(link.path)}
+              className={`text-brand-slate-light hover:text-brand-slate border-b border-transparent hover:border-current pb-1 transition-all ${
+                link.highlight ? "text-brand-slate font-bold decoration-brand-badge/40 underline decoration-2 underline-offset-4" : ""
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </nav>
 
-        {/* Desktop Call to Action Button (hidden on mobile to prevent overlapping) */}
+        {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <button 
-            onClick={() => scrollToSection("interactive-auditor")}
+          <Link
+            to="/test-ai"
+            onClick={() => handleNavClick("/test-ai")}
             className="bg-brand-slate hover:bg-brand-slate-light text-brand-beige px-4 py-2 text-xs font-semibold rounded-xl border border-transparent hover:border-brand-muted-lavender/30 transition-all duration-300"
           >
             Fai il Test Gratis
-          </button>
+          </Link>
         </div>
 
-        {/* Mobile menu and triggers (hamburger icon) */}
-        <div className="flex items-center gap-3 md:hidden">
-          {/* Quick Support Direct WhatsApp Callout on mobile */}
+        {/* Mobile menu triggers */}
+        <div className="flex items-center gap-3 xl:hidden">
           <a
             href="https://wa.me/393791038253"
             target="_blank"
@@ -133,7 +94,7 @@ export default function Navbar() {
 
       </div>
 
-      {/* Expanded Animated Mobile Dropdown Menu Drawer */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -141,7 +102,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden border-t border-brand-tau bg-white/95 backdrop-blur-md overflow-hidden"
+            className="xl:hidden border-t border-brand-tau bg-white/95 backdrop-blur-md overflow-hidden"
           >
             <div className="px-5 py-6 space-y-4 max-w-lg mx-auto flex flex-col items-stretch text-center">
               
@@ -149,57 +110,28 @@ export default function Navbar() {
                 Menu Di Navigazione
               </div>
 
-              <button
-                onClick={() => scrollToSection("pillars")}
-                className="py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-semibold text-brand-slate hover:bg-brand-cream/60 rounded-sm text-left transition-all"
-              >
-                I Tre Pilastri
-              </button>
-              
-              <button
-                onClick={() => scrollToSection("duo")}
-                className="py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-semibold text-brand-slate hover:bg-brand-cream/60 rounded-sm text-left transition-all"
-              >
-                Chi Siamo (Teresa & Gemini)
-              </button>
-
-              <button
-                onClick={() => scrollToSection("workflow")}
-                className="py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-semibold text-brand-slate hover:bg-brand-cream/60 rounded-sm text-left transition-all"
-              >
-                Il Metodo Lean
-              </button>
-
-              <button
-                onClick={() => scrollToSection("new-website")}
-                className="py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-bold text-brand-slate bg-brand-cream/40 hover:bg-brand-cream/80 rounded-sm text-left transition-all border-l-2 border-brand-muted-lavender"
-              >
-                Nuovo Sito ✨ (Punto Di Svolta)
-              </button>
-
-              <button
-                onClick={() => scrollToSection("calculator")}
-                className="py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-semibold text-brand-slate hover:bg-brand-cream/60 rounded-sm text-left transition-all"
-              >
-                Calcolatore Tempo Liberato
-              </button>
-
-              <button
-                onClick={() => scrollToSection("interactive-auditor")}
-                className="py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-semibold text-brand-slate hover:bg-brand-cream/60 rounded-sm text-left transition-all"
-              >
-                AI Test Rapido
-              </button>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => handleNavClick(link.path)}
+                  className={`py-2.5 px-4 font-sans text-xs uppercase tracking-wider font-semibold text-brand-slate hover:bg-brand-cream/60 rounded-sm text-left transition-all ${
+                    link.highlight ? "font-bold bg-brand-cream/40 border-l-2 border-brand-muted-lavender" : ""
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
 
               <div className="border-t border-brand-slate/10 pt-4 mt-2 flex flex-col gap-3">
-                <button
-                  onClick={() => scrollToSection("interactive-auditor")}
+                <Link
+                  to="/test-ai"
+                  onClick={() => handleNavClick("/test-ai")}
                   className="w-full bg-brand-slate hover:bg-brand-slate-light text-brand-beige py-3.5 text-xs font-sans uppercase tracking-widest font-bold rounded-sm text-center shadow-sm"
                 >
                   Fai il Test Gratis
-                </button>
+                </Link>
 
-                {/* Additional support trigger inside list */}
                 <a
                   href="https://wa.me/393791038253"
                   target="_blank"
