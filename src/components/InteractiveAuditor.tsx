@@ -9,7 +9,8 @@ import {
   RefreshCw, 
   AlertCircle,
   HelpCircle,
-  ArrowRight
+  ArrowRight,
+  Mail
 } from "lucide-react";
 import { AuditAnswers } from "../types";
 
@@ -26,6 +27,19 @@ export default function InteractiveAuditor() {
   const [loadingStep, setLoadingStep] = useState<string>("");
   const [strategyResult, setStrategyResult] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const handleEmailResults = () => {
+    const subject = encodeURIComponent(`Audit d'Efficienza Digitale - ${formData.businessName}`);
+    const bodyText = `Ciao Teresa,\n\nHo completato il Test d'Efficienza Digitale su Facilissimo.web!\nEcco i dettagli sul mio business:\n\n` +
+      `- Attività/Brand: ${formData.businessName}\n` +
+      `- Settore: ${formData.businessType || "N/A"}\n` +
+      `- Sito Web Attuale: ${formData.websiteUrl || "Nessuno (Nuovo Progetto)"}\n` +
+      `- Attività Manuali Ripetitive: ${formData.manualTasks || "Nessuna di rilievo"}\n` +
+      `- Stress Tecnologico Principale: ${formData.mainStress || "Nessuno di rilievo"}\n\n` +
+      `Vorrei prenotare la mia Sessione Strategica Gratuita di 15 minuti basandoci su questo report!\n\nCordiali saluti.`;
+    
+    window.location.href = `mailto:mariateresarogani@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -398,19 +412,28 @@ Teresa & Gemini
                           Ti piace questa visione di lavoro?
                         </p>
                         <p className="text-[11px] text-brand-slate-light font-sans">
-                          Parla direttamente con Teresa per consolidare i flussi.
+                          Invia l'esito a <strong className="text-brand-slate">mariateresarogani@gmail.com</strong> o parla con Teresa.
                         </p>
                       </div>
-                      <button
-                        onClick={() => {
-                          const cForm = document.getElementById("contact");
-                          if (cForm) cForm.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        className="w-full sm:w-auto mt-3 sm:mt-0 text-center px-4 py-2.5 bg-brand-slate text-brand-beige hover:bg-brand-slate-light text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5"
-                      >
-                        Prenota Sessione Strategica
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto mt-3 sm:mt-0">
+                        <button
+                          onClick={handleEmailResults}
+                          className="w-full sm:w-auto text-center px-4 py-2.5 bg-brand-cream hover:bg-white text-brand-slate border border-brand-slate/10 hover:border-brand-slate text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5 transition-all"
+                        >
+                          <Mail className="w-3.5 h-3.5 text-brand-muted-lavender" />
+                          Invia per Email
+                        </button>
+                        <button
+                          onClick={() => {
+                            const cForm = document.getElementById("contact");
+                            if (cForm) cForm.scrollIntoView({ behavior: "smooth" });
+                          }}
+                          className="w-full sm:w-auto text-center px-4 py-2.5 bg-brand-slate text-brand-beige hover:bg-brand-slate-light text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm flex items-center justify-center gap-1.5"
+                        >
+                          Prenota Strategia
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
                   </motion.div>
                 )}

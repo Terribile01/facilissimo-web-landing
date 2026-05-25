@@ -41,7 +41,7 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a 
-                href="https://whatsapp.com" 
+                href="https://wa.me/393791038253" 
                 target="_blank" 
                 rel="noreferrer"
                 className="hover:text-brand-beige transition-colors p-2.5 bg-brand-slate-light/40 rounded-sm border border-brand-slate-light/60 block"

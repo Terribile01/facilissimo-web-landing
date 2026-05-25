@@ -218,7 +218,7 @@ export default function ContactForm() {
                   </div>
 
                   <p className="font-sans text-xs sm:text-sm text-brand-slate-light leading-relaxed">
-                    Teresa ha ricevuto i tuoi dettagli progettuali. Controllerà l'analisi tecnica di Gemini per elaborare idee pratiche e ti invierà un invito email entro 24 ore lavorative.
+                    La tua richiesta è stata salvata ed è destinata a <strong className="text-brand-slate">mariateresarogani@gmail.com</strong>. Teresa controllerà l'analisi di ottimizzazione di Gemini e ti risponderà con un invito personalizzato entro 24 ore lavorative.
                   </p>
 
                   <button
