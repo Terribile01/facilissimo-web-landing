@@ -22,6 +22,17 @@ export default function NewWebsiteSection() {
 
   return (
     <section id="new-website" className="relative bg-[#1a181b] py-20 px-4 sm:px-6 lg:px-8 text-stone-100 overflow-hidden">
+      {/* Soft overlay background image representing organized focus and Notion setup */}
+      <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none select-none mix-blend-lighten">
+        <img
+          src="/src/assets/images/bg_cats_focus_1779702833665.png"
+          alt="Organized focus and Notion setup"
+          className="w-full h-full object-cover object-center filter grayscale contrast-125"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a181b] via-transparent to-[#1a181b]" />
+      </div>
+
       {/* Decorative premium radial glow */}
       <div className="absolute top-0 left-1/4 w-[300px] h-[300px] rounded-full bg-brand-muted-lavender/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[250px] h-[250px] rounded-full bg-brand-badge/5 blur-[100px] pointer-events-none" />

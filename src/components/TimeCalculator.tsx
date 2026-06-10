@@ -20,8 +20,19 @@ export default function TimeCalculator() {
   const espressoEnjoyed = Math.round(yearlyHoursSaved * 4); // 15 mins per relaxing coffee
 
   return (
-    <section id="calculator" className="py-24 bg-brand-beige border-b border-brand-slate/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="calculator" className="relative py-24 bg-brand-beige border-b border-brand-slate/10 overflow-hidden">
+      {/* Soft overlay background image representing digital noise & stress */}
+      <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none select-none mix-blend-multiply">
+        <img
+          src="/src/assets/images/bg_cats_stress_1779702817147.png"
+          alt="Digital noise and cat stress"
+          className="w-full h-full object-cover object-center filter grayscale"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-beige via-transparent to-brand-beige" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Title */}
         <div className="text-center mb-16 max-w-2xl mx-auto pb-6 border-b border-brand-slate/10">

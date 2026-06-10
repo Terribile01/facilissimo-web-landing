@@ -6,8 +6,19 @@ export default function DuoSection() {
   const [activePartner, setActivePartner] = useState<"teresa" | "gemini">("teresa");
 
   return (
-    <section id="duo" className="py-24 bg-brand-beige overflow-hidden border-b border-brand-slate/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="duo" className="relative py-24 bg-brand-beige overflow-hidden border-b border-brand-slate/10">
+      {/* Soft overlay background image representing Teresa and Gemini strategic alignment */}
+      <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none select-none mix-blend-multiply">
+        <img
+          src="/src/assets/images/bg_cats_duo_1779702850905.png"
+          alt="Teresa & Gemini Strategic Duo illustration"
+          className="w-full h-full object-cover object-center filter grayscale"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-beige via-transparent to-brand-beige" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Block */}
         <div className="text-center max-w-2xl mx-auto mb-16">
